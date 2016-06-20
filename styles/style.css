@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: 100% Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+
+#mainContainer {
+    width: 100%;
+    text-align: center;
+    background: url("../Polarlicht.jpg");
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    vertical-align: top;
+    color: white;
+    height: 100vh;
+    position: relative;
+}
+
+#mainContainer h1 {
+    font-size: 38px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+}
+
+#mainContainer .buttons {
+    position: absolute;
+    margin-top: 725px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+}
+
+#mainContainer .buttons #current {
+    border: 2px solid #F7B032;
+    color: white;
+    background: transparent;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+#mainContainer .buttons #daily {
+    border: 2px solid #F7B032;
+    color: white;
+    background: transparent;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+#mainContainer .buttons #hourly {
+    border: 2px solid #F7B032;
+    color: white;
+    background: transparent;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+}
+
+
+#mainContainer #currentTemp {
+    position: absolute;
+    width: 100%;
+    margin-top: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#mainContainer #currentTemp .currentTempStyles {
+    font-size: 55px;
+    text-align: center;
+    width: 100%;
+    padding-top: 100px
+
+}
+
+#mainContainer #currentTemp .dailyTempStyles {
+    margin: 5px auto;
+    padding: 10px;
+    height: 200px;
+    width: 25%;
+    border: 2px solid #F7B032;
+    color: white;
+    border-radius: 5px;
+}
+
+#mainContainer #currentTemp .dailyTempStyles p {
+    font-size: 14px;
+}
+
+#mainContainer #currentTemp .hourlyTempStyles {
+    margin: 5px auto;
+    padding: 10px;
+    height: 20%;
+    width: 15%;
+    border: 2px solid #F7B032;
+    color: white;
+    border-radius: 5px;
+
+}
+
+#mainContainer #currentTemp .hourlyTempStyles p {
+    font-size: 14px;
+}
+
+
