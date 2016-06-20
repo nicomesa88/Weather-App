@@ -3,7 +3,7 @@
 }
 
 body {
-    font: 100% Helvetica, sans-serif;
+    font:Helvetica, sans-serif;
     margin: 0;
 }
 
@@ -16,7 +16,6 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     vertical-align: top;
-    color: white;
     height: 100vh;
     position: relative;
 }
@@ -29,6 +28,11 @@ h1 {
     margin-right: auto;
     text-align: center;
     width: 100%;
+    color: white;
+}
+
+h2 {
+    color: white;
 }
 
 .buttons {
@@ -50,6 +54,7 @@ h1 {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 .buttons #daily {
@@ -62,6 +67,7 @@ h1 {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 #hourly {
@@ -74,6 +80,7 @@ h1 {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 
@@ -97,14 +104,13 @@ h1 {
 }
 
 .dailyTempStyles {
-    margin: 5px auto;
+    margin: 5px;
     padding: 10px;
     height: 200px;
-    width: 25%;
+    width: 24%;
     border: 2px solid #F7B032;
     color: white;
     border-radius: 5px;
-
     font-weight: bold;
 }
 
@@ -113,10 +119,10 @@ h1 {
 }
 
 .hourlyTempStyles {
-    margin: 5px auto;
+    margin: 5px;
     padding: 10px;
     height: 20%;
-    width: 25%;
+    width: 24%;
     border: 2px solid #F7B032;
     color: white;
     border-radius: 5px;
