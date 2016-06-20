@@ -3,7 +3,7 @@
 var apiKey = "96ab661803308b77c76d52c469759b92"
 var baseUrl = "https://api.forecast.io/forecast/" + apiKey
 
-var containerEl = document.querySelector("#currentTemp"),
+var container = document.querySelector("#currentTemp"),
     currentViewButton = document.querySelector(".buttons button[value='current']"),
     dailyViewButton = document.querySelector(".buttons button[value='daily']"),
     hourlyViewButton = document.querySelector(".buttons button[value='hourly']")
@@ -13,15 +13,15 @@ var currentWeather = function(positionObj) {
         long = positionObj.coords.longitude
     var fullUrl = baseUrl + "/" + lat + "," + long,
         currentPromise = $.getJSON(fullUrl)
-    currentPromise.then(generateCurrentHTML)
+    currentPromise.then(currentHTML)
 }
 
-var generateCurrentHTML = function(response){
+var currentHTML = function(response){
     var htmlString = "<div class='currentTempStyles'>"
         htmlString += "<h2>The current temperature is </h2>"
         htmlString +=   "<h2>" + Math.round(response.currently.temperature) + "&deg; F</h2>"
         htmlString += "</div>"
-    containerEl.innerHTML = htmlString
+    container.innerHTML = htmlString
 }
 
 
@@ -30,20 +30,20 @@ var dailyWeather = function(positionObj) {
         long = positionObj.coords.longitude
     var fullUrl = baseUrl + "/" + lat + "," + long,
         dailyPromise = $.getJSON(fullUrl)
-    dailyPromise.then(generateDailyHTML)
+    dailyPromise.then(dailyHTML)
 }
 
-var generateDailyHTML = function(jsonData) {
+var dailyHTML = function(jsonData) {
     var daysArray = jsonData.daily.data
     var totalHtmlString = ''
     for(var i = 0; i < daysArray.length; i++){
         var soloDay = daysArray[i]
-        totalHtmlString += generateDayHTML(soloDay)
+        totalHtmlString += newDayHTML(soloDay)
     }
-    containerEl.innerHTML = totalHtmlString
+    container.innerHTML = totalHtmlString
 }
 
-var generateDayHTML = function(response){
+var newDayHTML = function(response){
     var timeValue = response.time
     var nowDate = new Date(timeValue * 1000)
     var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -73,11 +73,11 @@ var hourlyWeather = function(positionObj) {
 var generateHourlyHTML = function(jsonData) {
     var hourlyArray = jsonData.hourly.data
     var totalHtmlString = ''
-    for(var i = 0; i < 12; i++){
+    for(var i = 0; i < 9; i++){
         var soloHour = hourlyArray[i]
         totalHtmlString += generateHourHTML(soloHour)
     }
-    containerEl.innerHTML = totalHtmlString
+    container.innerHTML = totalHtmlString
 }
 
 var generateHourHTML = function(response){
@@ -98,8 +98,8 @@ var generateHourHTML = function(response){
 
 
 var viewChange = function(event) {
-    var buttonEl = event.target
-    window.location.hash = buttonEl.value
+    var buttonPress = event.target
+    window.location.hash = buttonPress.value
 }
 
 
