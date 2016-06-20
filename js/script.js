@@ -18,6 +18,7 @@ var currentWeather = function(positionObj) {
 
 var generateCurrentHTML = function(response){
     var htmlString = "<div class='currentTempStyles'>"
+        htmlString += "<h2>The current temperature is </h2>"
         htmlString +=   "<h2>" + Math.round(response.currently.temperature) + "&deg; F</h2>"
         htmlString += "</div>"
     containerEl.innerHTML = htmlString
@@ -84,8 +85,8 @@ var generateHourHTML = function(response){
     var time = response.time
         time = time * 1000
     var d = new Date(time)
-    var hours = (d.getHours() < 8) ? "0" + d.getHours() : d.getHours()
-    var minutes = (d.getMinutes() < 8) ? "0" + d.getMinutes() : d.getMinutes()
+    var hours = (d.getHours() < 12) ? "0" + d.getHours() : d.getHours()
+    var minutes = (d.getMinutes() < 12) ? "0" + d.getMinutes() : d.getMinutes()
     var formattedTime = hours + ":" + minutes
     var htmlString = "<div class='hourlyTempStyles'>"
         htmlString +=   "<p>" + formattedTime + " hrs</p>"
