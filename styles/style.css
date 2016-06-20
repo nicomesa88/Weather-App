@@ -21,7 +21,7 @@ body {
     position: relative;
 }
 
-#mainContainer h1 {
+h1 {
     font-size: 38px;
     position: absolute;
     margin-top: 50px;
@@ -31,7 +31,7 @@ body {
     width: 100%;
 }
 
-#mainContainer .buttons {
+.buttons {
     position: absolute;
     margin-top: 725px;
     margin-left: auto
@@ -40,7 +40,7 @@ body {
     width: 100%;
 }
 
-#mainContainer .buttons #current {
+.buttons #current {
     border: 2px solid #F7B032;
     color: white;
     background: transparent;
@@ -52,7 +52,7 @@ body {
     margin: 0 10px;
 }
 
-#mainContainer .buttons #daily {
+.buttons #daily {
     border: 2px solid #F7B032;
     color: white;
     background: transparent;
@@ -104,11 +104,8 @@ body {
     border: 2px solid #F7B032;
     color: white;
     border-radius: 5px;
-<<<<<<< HEAD
-    font-weight: bold;
-=======
 
->>>>>>> master
+    font-weight: bold;
 }
 
 .dailyTempStyles p {
