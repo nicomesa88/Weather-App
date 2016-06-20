@@ -35,7 +35,7 @@ body {
 #mainContainer .buttons {
     position: absolute;
     margin-top: 725px;
-    margin-left: auto;
+    margin-left: auto
     margin-right: auto;
     text-align: center;
     width: 100%;
@@ -51,9 +51,6 @@ body {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
-    transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
 }
 
 #mainContainer .buttons #daily {
@@ -66,12 +63,9 @@ body {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
-    transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
 }
 
-#mainContainer .buttons #hourly {
+#hourly {
     border: 2px solid #F7B032;
     color: white;
     background: transparent;
@@ -81,9 +75,6 @@ body {
     font-size: 16px;
     border-radius: 5px;
     margin: 0 10px;
-    transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
 }
 
 
@@ -98,7 +89,7 @@ body {
     flex-wrap: wrap;
 }
 
-#mainContainer #currentTemp .currentTempStyles {
+.currentTempStyles {
     font-size: 55px;
     text-align: center;
     width: 100%;
@@ -106,7 +97,7 @@ body {
 
 }
 
-#mainContainer #currentTemp .dailyTempStyles {
+.dailyTempStyles {
     margin: 5px auto;
     padding: 10px;
     height: 200px;
@@ -114,24 +105,26 @@ body {
     border: 2px solid #F7B032;
     color: white;
     border-radius: 5px;
+    font-weight: bold;
 }
 
-#mainContainer #currentTemp .dailyTempStyles p {
+.dailyTempStyles p {
     font-size: 14px;
 }
 
-#mainContainer #currentTemp .hourlyTempStyles {
+.hourlyTempStyles {
     margin: 5px auto;
     padding: 10px;
     height: 20%;
-    width: 15%;
+    width: 25%;
     border: 2px solid #F7B032;
     color: white;
     border-radius: 5px;
+    font-weight: bold;
 
 }
 
-#mainContainer #currentTemp .hourlyTempStyles p {
+.hourlyTempStyles p {
     font-size: 14px;
 }
 

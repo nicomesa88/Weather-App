@@ -8,7 +8,7 @@ var containerEl = document.querySelector("#currentTemp"),
     dailyViewButton = document.querySelector(".buttons button[value='daily']"),
     hourlyViewButton = document.querySelector(".buttons button[value='hourly']")
 
-var getCurrentWeather = function(positionObj) {
+var currentWeather = function(positionObj) {
     var lat = positionObj.coords.latitude,
         long = positionObj.coords.longitude
     var fullUrl = baseUrl + "/" + lat + "," + long
@@ -23,7 +23,7 @@ var generateCurrentHTML = function(response){
 }
 
 
-var getDailyWeather = function(positionObj) {
+var dailyWeather = function(positionObj) {
     var lat = positionObj.coords.latitude,
         long = positionObj.coords.longitude
     var fullUrl = baseUrl + "/" + lat + "," + long
@@ -59,7 +59,7 @@ var generateDayHTML = function(response){
 }
 
 
-var getHourlyWeather = function(positionObj) {
+var hourlyWeather = function(positionObj) {
     var lat = positionObj.coords.latitude,
         long = positionObj.coords.longitude
     var fullUrl = baseUrl + "/" + lat + "," + long
@@ -69,7 +69,7 @@ var getHourlyWeather = function(positionObj) {
 var generateHourlyHTML = function(jsonData) {
     var hourlyArray = jsonData.hourly.data
     var totalHtmlString = ''
-    for(var i = 0; i < 24; i++){
+    for(var i = 0; i < 12; i++){
         var soloHour = hourlyArray[i]
         totalHtmlString += generateHourHTML(soloHour)
     }
@@ -81,12 +81,13 @@ var generateHourHTML = function(response){
     var time = response.time
         time = time * 1000
     var d = new Date(time)
-    var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours()
-    var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes()
+    var hours = (d.getHours() < 8) ? "0" + d.getHours() : d.getHours()
+    var minutes = (d.getMinutes() < 8) ? "0" + d.getMinutes() : d.getMinutes()
     var formattedTime = hours + ":" + minutes
     var htmlString = "<div class='hourlyTempStyles'>"
         htmlString +=   "<p>" + formattedTime + " hrs</p>"
         htmlString +=   "<p>" + Math.round(response.apparentTemperature) + "&deg; F</p>"
+        htmlString +=   "<p>" + response.summary + "</p>"
         htmlString += "</div>"
     return htmlString
 }
@@ -101,13 +102,13 @@ var viewChange = function(event) {
 var controller = function() {
     var viewType = window.location.hash.substring(1)
     if (viewType === "current") {
-        navigator.geolocation.getCurrentPosition(getCurrentWeather)
+        navigator.geolocation.getCurrentPosition(currentWeather)
     }
     else if (viewType === "daily") {
-        navigator.geolocation.getCurrentPosition(getDailyWeather)
+        navigator.geolocation.getCurrentPosition(dailyWeather)
     }
     else if (viewType === "hourly") {
-        navigator.geolocation.getCurrentPosition(getHourlyWeather)
+        navigator.geolocation.getCurrentPosition(hourlyWeather)
     }
 }
 
