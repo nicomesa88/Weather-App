@@ -126,13 +126,3 @@ window.addEventListener('hashchange', controller)
 currentViewButton.addEventListener('click', viewChange)
 dailyViewButton.addEventListener('click', viewChange)
 hourlyViewButton.addEventListener('click', viewChange)
-
-
-
-// routes for weather app
-//  routes : {
-//      ":lat/:long/current":"ShowCurrent"
-//      ":lat/:long/daily":"ShowDaily"
-//      ":lat/:long/hourly":"ShowHourly"
-//      "*anything":"geolocate" (get current lat and long. write them to  with "current" as default viewtype)
-//  }
