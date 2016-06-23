@@ -46,7 +46,7 @@ h2 {
 	width: 100%;
 }
 
-.buttons #current {
+.buttons button{
 	border: 2px solid #F7B032;
 	color: white;
 	background: transparent;
@@ -59,17 +59,7 @@ h2 {
 	font-weight: bold;
 }
 
-.buttons #daily {
-	border: 2px solid #F7B032;
-	color: white;
-	background: transparent;
-	padding: 15px 32px;
-	text-align: center;
-	display: inline-block;
-	font-size: 16px;
-	border-radius: 5px;
-	margin: 0 10px;
-	font-weight: bold;
+
 }
 
 #hourly {

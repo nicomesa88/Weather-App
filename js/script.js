@@ -5,33 +5,34 @@ console.log(Backbone)
 var container = document.querySelector("#currentTemp"),
 	buttonContainerNode = document.querySelector(".buttons")
 
-var renderCurrentWeather = function(positionObj) {
-	// var lat = positionObj.coords.latitude,
-	// 	long = positionObj.coords.longitude
-	// var fullUrl = baseUrl + "/" + lat + "," + long,
-	// 	currentPromise = $.getJSON(fullUrl)
-	// currentPromise.then(currentHTML)
-}
+// var renderCurrentWeather = function(positionObj) {
+// 	var lat = positionObj.coords.latitude,
+// 		long = positionObj.coords.longitude
+// 	var fullUrl = baseUrl + "/" + lat + "," + long,
+// 		currentPromise = $.getJSON(fullUrl)
+// 	currentPromise.then(currentHTML)
+// }
 
-var currentHTML = function(response){
+var renderCurrentWeather = function(response){
 	var htmlString = "<div class='currentTempStyles'>"
 		htmlString += "<h2>The current temperature is </h2>"
 		htmlString +=   "<h2>" + Math.round(response.currently.temperature) + "&deg; F</h2>"
 		htmlString +=   "<h2>" + response.currently.summary + "</h2>"
 		htmlString += "</div>"
+        container.innerHTML = htmlString
 
 }
 
 
-var renderDailyWeather = function(positionObj) {
-	// var lat = positionObj.coords.latitude,
-	// 	long = positionObj.coords.longitude
-	// var fullUrl = baseUrl + "/" + lat + "," + long,
-	// 	dailyPromise = $.getJSON(fullUrl)
-	// dailyPromise.then(dailyHTML)
-}
+// var renderDailyWeather = function(positionObj) {
+// 	var lat = positionObj.coords.latitude,
+// 		long = positionObj.coords.longitude
+// 	var fullUrl = baseUrl + "/" + lat + "," + long,
+// 		dailyPromise = $.getJSON(fullUrl)
+// 	dailyPromise.then(dailyHTML)
+// }
 
-var dailyHTML = function(jsonData) {
+var renderDailyWeather = function(jsonData) {
 	var daysArray = jsonData.daily.data
 	var totalHtmlString = ''
 	for(var i = 0; i < daysArray.length; i++){
@@ -50,49 +51,49 @@ var newDayHTML = function(response){
 	var month = months[nowDate.getMonth()]
 	var date = nowDate.getDate()
 	var dateString = day + ", " + month + " " + date
-	// var htmlString = "<div class='dailyTempStyles'>"
-	// 	htmlString +=   "<p>" + dateString + "</p>"
-	// 	htmlString +=   "<p>High " + Math.round(response.apparentTemperatureMax) + "&deg; F</p>"
-	// 	htmlString +=   "<p>Low " + Math.round(response.apparentTemperatureMin) + "&deg; F</p>"
-	// 	htmlString +=   "<p>" + response.summary + "</p>"
-	// 	htmlString += "</div>"
-	// return htmlString
+	var htmlString = "<div class='dailyTempStyles'>"
+		htmlString +=   "<p>" + dateString + "</p>"
+		htmlString +=   "<p>High " + Math.round(response.apparentTemperatureMax) + "&deg; F</p>"
+		htmlString +=   "<p>Low " + Math.round(response.apparentTemperatureMin) + "&deg; F</p>"
+		htmlString +=   "<p>" + response.summary + "</p>"
+		htmlString += "</div>"
+	return htmlString
 }
 
 
-var renderHourlyWeather = function(positionObj) {
-	// var lat = positionObj.coords.latitude,
-	// 	long = positionObj.coords.longitude
-	// var fullUrl = baseUrl + "/" + lat + "," + long,
-	// 	hourlyPromise = $.getJSON(fullUrl)
-	// hourlyPromise.then(generateHourlyHTML)
+// var renderHourlyWeather = function(positionObj) {
+// 	var lat = positionObj.coords.latitude,
+// 		long = positionObj.coords.longitude
+// 	var fullUrl = baseUrl + "/" + lat + "," + long,
+// 		hourlyPromise = $.getJSON(fullUrl)
+// 	hourlyPromise.then(generateHourlyHTML)
+// }
+
+var renderHourlyWeather = function(jsonData) {
+	var hourlyArray = jsonData.hourly.data
+	var totalHtmlString = ''
+	for(var i = 0; i < 9; i++){
+		var soloHour = hourlyArray[i]
+		totalHtmlString += generateHourHTML(soloHour)
+	}
+	container.innerHTML = totalHtmlString
 }
 
-// var generateHourlyHTML = function(jsonData) {
-// 	var hourlyArray = jsonData.hourly.data
-// 	var totalHtmlString = ''
-// 	for(var i = 0; i < 9; i++){
-// 		var soloHour = hourlyArray[i]
-// 		totalHtmlString += generateHourHTML(soloHour)
-// 	}
-// 	container.innerHTML = totalHtmlString
-// }
-
-// var generateHourHTML = function(response){
-// 	console.log(response)
-// 	var time = response.time
-// 		time = time * 1000
-// 	var d = new Date(time)
-// 	var hours = (d.getHours() < 12) ? "0" + d.getHours() : d.getHours()
-// 	var minutes = (d.getMinutes() < 12) ? "0" + d.getMinutes() : d.getMinutes()
-// 	var formattedTime = hours + ":" + minutes
-// 	var htmlString = "<div class='hourlyTempStyles'>"
-// 		htmlString +=   "<p>" + formattedTime + " hrs</p>"
-// 		htmlString +=   "<p>" + Math.round(response.apparentTemperature) + "&deg; F</p>"
-// 		htmlString +=   "<p>" + response.summary + "</p>"
-// 		htmlString += "</div>"
-// 	return htmlString
-// }
+var generateHourHTML = function(response){
+	console.log(response)
+	var time = response.time
+		time = time * 1000
+	var d = new Date(time)
+	var hours = (d.getHours() < 12) ? "0" + d.getHours() : d.getHours()
+	var minutes = (d.getMinutes() < 12) ? "0" + d.getMinutes() : d.getMinutes()
+	var formattedTime = hours + ":" + minutes
+	var htmlString = "<div class='hourlyTempStyles'>"
+		htmlString +=   "<p>" + formattedTime + " hrs</p>"
+		htmlString +=   "<p>" + Math.round(response.apparentTemperature) + "&deg; F</p>"
+		htmlString +=   "<p>" + response.summary + "</p>"
+		htmlString += "</div>"
+	return htmlString
+}
 
 
 
@@ -146,8 +147,6 @@ var WeatherRouter = Backbone.Router.extend({
 
 		var wm = new WeatherModel(lat, lng)
 		wm.fetch().then(renderCurrentWeather)
-
-		container.innerHTML = currentHTML
 	},
 	ShowDaily: function(lat, lng){
 		STATE.lat = lat
