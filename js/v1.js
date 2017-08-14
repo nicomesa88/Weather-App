@@ -1,7 +1,7 @@
 
 // desired Url format: https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
 var apiKey = "96ab661803308b77c76d52c469759b92"
-var baseUrl = "https://api.forecast.io/forecast/" + apiKey
+var baseUrl = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + apiKey
 
 var container = document.querySelector("#currentTemp"),
 	currentViewButton = document.querySelector(".buttons button[value='current']"),

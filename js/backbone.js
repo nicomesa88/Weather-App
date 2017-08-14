@@ -115,7 +115,7 @@ var geolocate = function() {
 
 var WeatherModel = Backbone.Model.extend({
 	url: function(){
-		return 'https://api.forecast.io/forecast/96ab661803308b77c76d52c469759b92' + this.lat + '/' + this.lng
+		return 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/96ab661803308b77c76d52c469759b92' + this.lat + '/' + this.lng
 	},
 	initialize: function (inputLat, inputLng){
 		this.lat = inputLat

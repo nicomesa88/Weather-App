@@ -84,7 +84,7 @@ var generateHourHTML = function(response){
 	var time = response.time
 		time = time * 1000
 	var d = new Date(time)
-	var hours = (d.getHours() < 12) ? "0" + d.getHours() : d.getHours()
+	var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours()
 	var minutes = (d.getMinutes() < 12) ? "0" + d.getMinutes() : d.getMinutes()
 	var formattedTime = hours + ":" + minutes
 	var htmlString = "<div class='hourlyTempStyles'>"
@@ -117,7 +117,7 @@ var geolocate = function() {
 
 var WeatherModel = Backbone.Model.extend({
 	url: function(){
-		return 'https://api.forecast.io/forecast/96ab661803308b77c76d52c469759b92/' + this.lat + ',' + this.lng
+		return 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/96ab661803308b77c76d52c469759b92/' + this.lat + ',' + this.lng
 	},
 	initialize: function (inputLat, inputLng){
 		this.lat = inputLat
